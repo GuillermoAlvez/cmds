@@ -1,6 +1,10 @@
 git init
 git clone
+
+git pull
 git add .
+git commit
 git push
+
 VirtualBox: ns_error_failure (0x80004005), no inicia kali: deshabilitar secure boot
 
