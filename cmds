@@ -8,3 +8,12 @@ git push
 
 VirtualBox: ns_error_failure (0x80004005), no inicia kali: deshabilitar secure boot
 
+start nginx:
+copiar /etc/nginx/sites-availables/default, ponerle el nombre que se quiera (srv01)
+editarle el root, y el servername
+ln -s /etc/nginx/sites-availables/srv01 /etc/nginx/sites-enabled/ //link simbolico a sites-enables
+mkdir $root/index.html //crear archivo donde pusiste que es el root
+/etc/init.d/restart nginx //reinicio
+en el navegador pegarle al servername (como host), la ip es la del server.
+
+
