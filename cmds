@@ -16,4 +16,25 @@ mkdir $root/index.html //crear archivo donde pusiste que es el root
 /etc/init.d/restart nginx //reinicio
 en el navegador pegarle al servername (como host), la ip es la del server.
 
+instalacion php:
+sudo apt-get install libxml2-dev //es una dependencia
+http://php.net/downloads.php
+cd ../php-x.x.x
+./configure --enable-fpm --with-mysql //aca da un warning por with-mysql, creo que se puede arreglar poniendo mysqli
+make
+sudo make install
+##modificar lo de abajo por /etc/php/7.0/fpm/  , capaz que no haya que copiar ningun archivo
+cp php.ini-development /usr/local/php/php.ini
+cp /usr/local/etc/php-fpm.conf.default /usr/local/etc/php-fpm.conf //este no me funciono porque no existe el primer archivo
+cp sapi/fpm/php-fpm /usr/local/bin
+vim /usr/local/php/php.ini (cgi.fix_pathinfo=0) //esto no lo hice, esta en 1
+vim /usr/local/etc/php-fpm.conf //no lo hice, no encuentro esa parte
+  modificar
+  ; Unix user/group of processes
+  ; Note: The user is mandatory. If the group is not set, the default user's group
+  ;       will be used.
+  user = www-data
+  group = www-data
+
+
 
