@@ -38,3 +38,4 @@ vim /usr/local/etc/php-fpm.conf //no lo hice, no encuentro esa parte
 
 
 
+grep -i 'virtualbox\|git' cmds //o grep -ie 'virtualbox|git' cmds // uso de grep para dos palabras distintas
