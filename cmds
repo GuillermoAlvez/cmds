@@ -40,3 +40,7 @@ vim /usr/local/etc/php-fpm.conf //no lo hice, no encuentro esa parte
 
 grep -i 'virtualbox\|git' cmds //o grep -ie 'virtualbox|git' cmds // uso de grep para dos palabras distintas
 sudo netstat -panel | grep -ve  '80' | grep -ve '443' //escuchando puertos que no sean 443 ni 80
+wget http://download-new.utorrent.com/endpoint/utserver/os/linux-x64-ubuntu-13-04/track/beta/ -O utserver.tar.gz //utorrent paso 1
+sudo ln -s /opt/utorrent-server-alpha-v3_3/utserver /usr/bin/utserver //utorrent, paso 2
+utserver -settingspath /opt/utorrent-server-alpha-v3_3/ & //utorrent, paso 3
+ip:8080/gui //utorrent, paso 4
