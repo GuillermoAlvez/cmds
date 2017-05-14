@@ -44,3 +44,8 @@ wget http://download-new.utorrent.com/endpoint/utserver/os/linux-x64-ubuntu-13-0
 sudo ln -s /opt/utorrent-server-alpha-v3_3/utserver /usr/bin/utserver //utorrent, paso 2
 utserver -settingspath /opt/utorrent-server-alpha-v3_3/ & //utorrent, paso 3
 ip:8080/gui //utorrent, paso 4
+wget http://www.no-ip.com/client/linux/noip-duc-linux.tar.gz // dns dinamico noip2, paso 1
+tar xf noip-duc-linux.tar.gz //descomprimir, dns dinamico, no ip2 paso 2
+cd noip-2.1.9-1/ //noip2, paso 3
+make install // noip2, paso 4
+/usr/local/bin/noip2 -C //noip2, paso 5
