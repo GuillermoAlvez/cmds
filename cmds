@@ -38,3 +38,42 @@ vim /usr/local/etc/php-fpm.conf //no lo hice, no encuentro esa parte
 
 
 
+grep -i 'virtualbox\|git' cmds //o grep -ie 'virtualbox|git' cmds // uso de grep para dos palabras distintas
+sudo netstat -panel | grep -ve  '80' | grep -ve '443' //escuchando puertos que no sean 443 ni 80
+wget http://download-new.utorrent.com/endpoint/utserver/os/linux-x64-ubuntu-13-04/track/beta/ -O utserver.tar.gz //utorrent paso 1
+sudo ln -s /opt/utorrent-server-alpha-v3_3/utserver /usr/bin/utserver //utorrent, paso 2
+utserver -settingspath /opt/utorrent-server-alpha-v3_3/ & //utorrent, paso 3
+ip:8080/gui //utorrent, paso 4
+wget http://www.no-ip.com/client/linux/noip-duc-linux.tar.gz // dns dinamico noip2, paso 1
+tar xf noip-duc-linux.tar.gz //descomprimir, dns dinamico, no ip2 paso 2
+cd noip-2.1.9-1/ //noip2, paso 3
+make install // noip2, paso 4
+/usr/local/bin/noip2 -C //noip2, paso 5
+/usr/local/bin/noip2 // noip2, paso 5, iniciar el servicio, dns dinamico
+
+getcomposer.org //#laravel, composer ,getcomposer.org, composer gestiona dependencias por proyecto
+composer global require "laravel/installer" //install #laravel con composer
+nano ~/.bashrc (y agregar) export PATH="$HOME/.config/composer/vendor/bin:$PATH"//#laravel install
+sudo apt-get install php7.0-zip //#laravel install, dependencia
+laravel new blog // #laravel, nuevo proyecto?
+
+php artisan //#laravel, esto tiene que mostrarte todas las opciones sin error, si no anda, hacer los 3 pasos de abajo (upgrade composer)
+sudo apt-get install php-mbstring //upgrade composer, paso1	
+sudo apt-get install php-xml //upgrade composer, paso 2
+composer update --no-scripts   //upgrade composer, paso 3
+
+php artisan -V //#laravel version 5.5
+rm -dr blog/ //#laravel
+laravel new blog --dev //#laravel
+php artisan -V //#laravel version 5.5-dev (no entendi mucho estos pasos)
+composer require (paquete)//#laravel, instalar un paquete de desarrollo nuevo con composer
+php artisan serve //#laravel, #php, levanta server localhost:8000, en la carpeta blog
+
+
+
+
+?
+sudo apt-get install mysql-server //#laravel, #mysql instalacion
+mysql -uroot -p //#laravel, #mysql, create database blog, use blog, luego modificar el archivo .env con esos parametros
+
+
