@@ -19,13 +19,12 @@ users = {"Usuarios": [  {"nombre":"Artur","puerto":"3000"}  ,
 jsonUsers = json.dumps(users)
 jsonDecode = json.loads(jsonUsers)
 
-#print("\nusuario : "+ jsonDecode["Usuarios"][i]["nombre"])
-print("MONO , PUNTAJE;")
+
 for i in range (0,13):
 	time.sleep(4)
-
+	print("\nusuario : "+ jsonDecode["Usuarios"][i]["nombre"])
 	puerto = jsonDecode["Usuarios"][i]["puerto"]
-	#print()
+	print("url "+ "http://ubuntujs.labo:"+ puerto)
 
 	req = requests.get("http://ubuntujs.labo:"+ puerto +"/api/Challenges")
 	a = req.text
@@ -37,4 +36,4 @@ for i in range (0,13):
 		#print (resuelto)
 		if resuelto:
 			suma = suma + dificultad
-	print(jsonDecode["Usuarios"][i]["nombre"] + "," + str(suma)+";")
+	print("puntaje: " + str(suma))

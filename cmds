@@ -84,3 +84,5 @@ mysql -uroot -p //#laravel, #mysql, create database blog, use blog, luego modifi
 
 
 
+ll | wc -l // contar las lineas de (ls -la)
+ll | wc -w // contar la cantidad de palabras (ls -la)
