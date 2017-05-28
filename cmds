@@ -86,3 +86,9 @@ mysql -uroot -p //#laravel, #mysql, create database blog, use blog, luego modifi
 
 ll | wc -l // contar las lineas de (ls -la)
 ll | wc -w // contar la cantidad de palabras (ls -la)
+nmap -script /usr/share/nmap/scripts/smb-vuln-ms17-010.nse –script-args=unsafe=1 -p445 192.168.1.45 // smb ms17 vul windows 7 
+nmap -script /usr/share/nmap/scripts/smb-vuln-ms17-010.nse –script-args=unsafe=1 -p445 192.168.1.42 // smb ms17 vul windows 7 
+vagrant init wyeworks/workshop-ruby-on-rails-2017 //#instalacion #vagrant
+vagrant ssh //entrar a maquina virtual vagrant
+sudo find / -name vagrant //encontrar todos los archivos con nombre vagrant
+admin/5DhD64Je // pass router zte f660
