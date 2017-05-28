@@ -37,4 +37,4 @@ for i in range (0,13):
 		#print (resuelto)
 		if resuelto:
 			suma = suma + dificultad
-	print(jsonDecode["Usuarios"][i]["nombre"] + "," + str(suma)+";")
+	print(jsonDecode["Usuarios"][i]["nombre"] + "," + str(suma))
