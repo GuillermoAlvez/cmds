@@ -91,3 +91,5 @@ id=1 and SLEEP(5) // comprobar blind sql injection
 wp-content vulnerabilidad wordpress versiones viejas // mirar reydes https://www.youtube.com/watch?v=D4WTE2ZQYqo min 50 aprox 
 php-cgi ejecucion remota de codigo , versiones viejas // mirar reydes https://www.youtube.com/watch?v=D4WTE2ZQYqo min 19 aprox 
 server side includes (SSI injection) Injection, archivos con extesiones shtml,stm, shtm  // #inyeccion sql SSIi mirar reydes https://www.youtube.com/watch?v=D4WTE2ZQYqo min 15 aprox 
+
+bypass sanitize-html.js 1.4.2, <<script>alert(XSS2)</script>script>alert(XSS2)<<script>alert(XSS2)</script>/script> con algun enter //#nodejs libreria sanitize #minify 

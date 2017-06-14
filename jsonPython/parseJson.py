@@ -22,13 +22,23 @@ jsonDecode = json.loads(jsonUsers)
 #print("\nusuario : "+ jsonDecode["Usuarios"][i]["nombre"])
 print("MONO , PUNTAJE;")
 for i in range (0,13):
-	time.sleep(4)
+	
 
 	puerto = jsonDecode["Usuarios"][i]["puerto"]
 	#print()
+	req=''
+	while req == '':
+		try:
+			req = requests.get("http://ubuntujs.labo:"+ puerto +"/api/Challenges")
+		except:
+			#print("Connection refused by the server..")
+			#print("Let me sleep for 5 seconds")
+			#print("ZZzzzz...")
+			time.sleep(5)
+			#print("continua...")
+			continue
 
-	req = requests.get("http://ubuntujs.labo:"+ puerto +"/api/Challenges")
-	a = req.text
+
 	r= req.json()
 	suma = 0
 	for challenge in range (0,37):
@@ -38,3 +48,6 @@ for i in range (0,13):
 		if resuelto:
 			suma = suma + dificultad
 	print(jsonDecode["Usuarios"][i]["nombre"] + "," + str(suma))
+
+
+
