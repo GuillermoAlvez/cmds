@@ -86,10 +86,21 @@ mysql -uroot -p //#laravel, #mysql, create database blog, use blog, luego modifi
 
 ll | wc -l // contar las lineas de (ls -la)
 ll | wc -w // contar la cantidad de palabras (ls -la)
+
+nmap -script /usr/share/nmap/scripts/smb-vuln-ms17-010.nse –script-args=unsafe=1 -p445 192.168.1.45 // smb ms17 vul windows 7 
+nmap -script /usr/share/nmap/scripts/smb-vuln-ms17-010.nse –script-args=unsafe=1 -p445 192.168.1.42 // smb ms17 vul windows 7 
+vagrant init wyeworks/workshop-ruby-on-rails-2017 //#instalacion #vagrant
+vagrant ssh //entrar a maquina virtual vagrant
+sudo find / -name vagrant //encontrar todos los archivos con nombre vagrant
+admin/5DhD64Je // pass router zte f660
+
 python -m SimpleHTTPServer 8000 // simple http server python 
 id=1 and SLEEP(5) // comprobar blind sql injection
 wp-content vulnerabilidad wordpress versiones viejas // mirar reydes https://www.youtube.com/watch?v=D4WTE2ZQYqo min 50 aprox 
 php-cgi ejecucion remota de codigo , versiones viejas // mirar reydes https://www.youtube.com/watch?v=D4WTE2ZQYqo min 19 aprox 
 server side includes (SSI injection) Injection, archivos con extesiones shtml,stm, shtm  // #inyeccion sql SSIi mirar reydes https://www.youtube.com/watch?v=D4WTE2ZQYqo min 15 aprox 
 
+
 bypass sanitize-html.js 1.4.2, <<script>alert(XSS2)</script>script>alert(XSS2)<<script>alert(XSS2)</script>/script> con algun enter //#nodejs libreria sanitize #minify 
+
+
