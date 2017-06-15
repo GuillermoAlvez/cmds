@@ -1,0 +1,8 @@
+PROGRAM ejemplo; 
+const c = 15;
+var x,y : real;
+Begin
+	if x > c then 
+		x := x + y;
+	y := x div 2
+End.

@@ -1,0 +1,12 @@
+program testIfSimple; 
+var t,x,y: real;
+begin
+    if ( x <> y ) then 
+		begin
+			t := x;
+			x := y;
+			y := t
+		end
+	else 
+        t := x+y
+end.

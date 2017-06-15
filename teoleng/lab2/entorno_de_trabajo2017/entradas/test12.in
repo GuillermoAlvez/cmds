@@ -1,0 +1,22 @@
+Program TestDistintasSentecias ;
+const min=1; max=20;
+type arregloReal = array [min..max] of real;
+var
+	c,d    :real;
+	a      :ArregloReal;
+	i,cont :integer;
+	a,b    :boolean;
+Begin
+	c:=12;
+	d:=15;
+	cont:=0;
+	while c <<> d do c:=c+1;
+	repeat c:=c-1 until c :=(d div 2);
+	for i:=min to max do 
+		a[i]:=i;
+	for i:=max downto min+1 do begin
+		a[i]:=a[i-1]; cont:=cont+1
+	end;
+	if a then c:=1;
+	if b then c:=2 else c:=3;
+End.
