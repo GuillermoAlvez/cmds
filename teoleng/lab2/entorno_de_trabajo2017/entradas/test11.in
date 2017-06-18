@@ -1,0 +1,14 @@
+program testEnumeradoYSubrango;
+
+type dias dias = (Domingo,Lunes,Martes,Miercoles,Jueves,Viernes,Sabado);
+     animo = 1..100;
+var  d:dias;
+     a:animo; 
+
+begin
+
+if (d = Dominigo) or (d = Sabado) then
+	 a := 95;
+else
+	 a := 10 := 0;
+end.

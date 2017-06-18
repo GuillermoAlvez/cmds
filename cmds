@@ -100,9 +100,16 @@ wp-content vulnerabilidad wordpress versiones viejas // mirar reydes https://www
 php-cgi ejecucion remota de codigo , versiones viejas // mirar reydes https://www.youtube.com/watch?v=D4WTE2ZQYqo min 19 aprox 
 server side includes (SSI injection) Injection, archivos con extesiones shtml,stm, shtm  // #inyeccion sql SSIi mirar reydes https://www.youtube.com/watch?v=D4WTE2ZQYqo min 15 aprox 
 
+
 tc -s qdisc ls dev eth1 | grep -o 'Sent [0-9]*' //muestra solo lo que matchea
 crontab -e --> 00 8,9,10 * * * /home/jalvez/alertaCambiaPag/paginaModificada.sh // crontab a las 8,9,10 todos los dias, crontab -l lista 
 env -i /home/jalvez/alertaCambiaPag/paginaModificada.sh //probar crontab
 vagrant provision //si se edita Vagrantfile o Cheffile #ruby on rails
 git remote add origin git@bitbucket.org:<username>/hello_app.git
  git push -u origin --all //agregar repositorio remoto y pushear
+
+
+bypass sanitize-html.js 1.4.2, <<script>alert(XSS2)</script>script>alert(XSS2)<<script>alert(XSS2)</script>/script> con algun enter //#nodejs libreria sanitize #minify 
+
+
+

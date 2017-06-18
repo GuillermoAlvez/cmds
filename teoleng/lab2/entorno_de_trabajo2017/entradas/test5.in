@@ -1,0 +1,10 @@
+program test;
+
+var
+	s : array[1..10] of 1..3;
+	i,cont : integer;
+begin
+	for i:=1 to 10 do 
+		if s[i] = 1 then
+			cont := cont + 1
+end.

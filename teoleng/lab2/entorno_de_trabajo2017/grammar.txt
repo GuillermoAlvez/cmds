@@ -1,0 +1,10 @@
+# GRAMATICA A MODO DE EJEMPLO, RECONOCE EL EJEMPLO DE ENTREADA 1,
+# DEBEN MODIFICAR LAS REGLAS PARA QUE RECONOZCA EL LENGUAJE ESPECIFICADO EN LA LETRA DEL LABORATORIO.
+program		      -> 'PROGRAM' 'IDENT' 'SEMICOLON' declarations 'BEGIN' statementSequence 'END' 'DOT'
+declarations      ->  constants | types | variables | constants types | constants variables | types variables | 
+constants         -> 'CONST' constantsRecursivo
+constantsRecursivo-> 'IDENT' 'EQUAL' constant 'SEMICOLON'| 'IDENT' 'EQUAL' constant 'SEMICOLON' constRecursivo
+
+
+
+

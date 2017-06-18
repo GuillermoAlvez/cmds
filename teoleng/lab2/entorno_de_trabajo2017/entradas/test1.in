@@ -1,0 +1,4 @@
+Program HelloWorld;
+BEGIN
+ a := b
+END.
