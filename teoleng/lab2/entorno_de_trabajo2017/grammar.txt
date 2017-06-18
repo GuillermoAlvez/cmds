@@ -2,9 +2,32 @@
 # DEBEN MODIFICAR LAS REGLAS PARA QUE RECONOZCA EL LENGUAJE ESPECIFICADO EN LA LETRA DEL LABORATORIO.
 program		      -> 'PROGRAM' 'IDENT' 'SEMICOLON' declarations 'BEGIN' statementSequence 'END' 'DOT'
 declarations      ->  constants | types | variables | constants types | constants variables | types variables | 
+
 constants         -> 'CONST' constantsRecursivo
 constantsRecursivo-> 'IDENT' 'EQUAL' constant 'SEMICOLON'| 'IDENT' 'EQUAL' constant 'SEMICOLON' constRecursivo
 
+types             -> 'TYPE' typesRecursivo
+typesRecursivo    -> 'IDENT' 'EQUAL' type 'SEMICOLON' | 'IDENT' 'EQUAL' type 'SEMICOLON' typesRecursivo
 
+variables         -> 'VAR' variablesRecursion
+variablesRecursion-> indentifList 'COLON' type 'SEMICOLON' | indentifList 'COLON' type 'SEMICOLON' variablesRecursion
 
+statementSequence -> statement statementSequenceRecursivo
+statementSequenceRecursivo -> 'SEMICOLON' statement statementSequenceRecursivo | 
 
+statement 		  -> variable 'EQUAL' expression
+					|'WHILE' expression 'DO' statement
+					|'REPEAT' statementSequence 'UNTIL' expression
+					|'FOR' variableIdentif 'EQUAL' expression toDownTo
+					|'BEGIN' statementSequence 'END'
+					|'IF' expression 'THEN' statement | 'IF' expression 'THEN' statement 'ELSE' statement
+toDownTo 		   -> 'TO' | 'DOWNTO'
+
+expression 		   -> simpleExpression | simpleExpression relationalOperator simpleExpression
+
+simpleExpression   -> addSub term simpleExpRecursivo  | term simpleExpRecursivo
+addSub			   -> 'ADD' | 'SUB'
+simpleExpRecursivo -> additionOperator term simpleExpRecursivo |
+
+term               -> factor termRecursivo
+termRecursivo      -> additionOperator term 
