@@ -1,37 +1,44 @@
 # GRAMATICA A MODO DE EJEMPLO, RECONOCE EL EJEMPLO DE ENTREADA 1,
 # DEBEN MODIFICAR LAS REGLAS PARA QUE RECONOZCA EL LENGUAJE ESPECIFICADO EN LA LETRA DEL LABORATORIO.
 program		      -> 'PROGRAM' 'IDENT' 'SEMICOLON' declarations 'BEGIN' statementSequence 'END' 'DOT'
-declarations      ->  constants | types | variables | constants types | constants variables | types variables | 
+declarations      ->  constants | types | variables | constants types | constants variables | types variables | constants types variables |
 
 constants         -> 'CONST' constantsRecursivo
-constantsRecursivo -> 'IDENT' 'EQUAL' constant 'SEMICOLON'| 'IDENT' 'EQUAL' constant 'SEMICOLON' constRecursivo
+constantsRecursivo -> 'IDENT' 'EQUAL' constant 'SEMICOLON'| 'IDENT' 'EQUAL' constant 'SEMICOLON' constantsRecursivo
+
 
 types             -> 'TYPE' typesRecursivo
 typesRecursivo    -> 'IDENT' 'EQUAL' type 'SEMICOLON' | 'IDENT' 'EQUAL' type 'SEMICOLON' typesRecursivo
 
-variables         -> 'VAR' variablesRecursion
-variablesRecursion -> indentifList 'COLON' type 'SEMICOLON' | indentifList 'COLON' type 'SEMICOLON' variablesRecursion
+
+
+variables         -> 'VAR' identifList 'COLON' type 'SEMICOLON' variablesRecursion
+variablesRecursion ->  identifList 'COLON' type 'SEMICOLON' variablesRecursion  | 
 
 statementSequence -> statement statementSequenceRecursivo
 statementSequenceRecursivo -> 'SEMICOLON' statement statementSequenceRecursivo | 
 
-statement 		  -> variable 'ASSIGN' expression | 'WHILE' expression 'DO' statement | 'REPEAT' statementSequence 'UNTIL' expression | 'FOR' variableIdentif 'ASSIGN' expression toDownTo |'BEGIN' statementSequence 'END' |'IF' expression 'THEN' statement | 'IF' expression statement 'ELSE' statement
+statement 		  -> variable 'ASSIGN' expression  | 'WHILE' expression 'DO' statement | 'REPEAT' statementSequence 'UNTIL' expression | 'FOR' variableIdentif 'ASSIGN' expression toDownTo expression 'DO' statement |'BEGIN' statementSequence 'END' | 'IF' expression 'THEN' statement unElse
+
+unElse -> 'ELSE' statement | 
+
 toDownTo 		   -> 'TO' | 'DOWNTO'
 
 expression 		   -> simpleExpression | simpleExpression relationalOperator simpleExpression
 
-simpleExpression   -> addSub term simpleExpRecursivo  | term simpleExpRecursivo
-addSub			   -> 'ADD' | 'SUB'
+simpleExpression   -> addSub term simpleExpRecursivo 
+addSub			   -> 'ADD' | 'SUB' |
 simpleExpRecursivo -> additionOperator term simpleExpRecursivo |
 
-term               -> factor termRecursivo
+
+term               -> factor termRecursivo | factor
 termRecursivo      -> multiplicationOperator factor termRecursivo | 
 
 factor             -> variable | 'NUMBER' | 'OPAR' expression 'CPAR' | 'NOT' factor
 
 relationalOperator -> 'EQUAL' | 'DIFFERENT' | 'LT' | 'LTE' | 'GT' | 'GTE'
 
-additionalOperator -> 'ADD' | 'SUB' | 'OR'
+additionOperator -> 'ADD' | 'SUB' | 'OR'
 
 multiplicationOperator -> 'ASTER' | 'BARRA' | 'DIV' | 'MOD' | 'AND' 
 
@@ -54,4 +61,4 @@ arrayTypeRecursivo -> 'COMMA' simpleType arrayTypeRecursivo |
 identifList        -> 'IDENT' identifListRecursivo
 identifListRecursivo -> 'COMMA' 'IDENT' identifListRecursivo | 
 
-constant           -> addSub 'IDENT' | addSub 'NUMBER' | 'IDENT' | 'NUMBER'
+constant           -> addSub 'IDENT' | addSub 'NUMBER' 

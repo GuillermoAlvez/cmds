@@ -1,7 +1,5 @@
 Program testShiftReduce;
-var 
-	a       :boolean;
-	b,c,d   :real;
+
 Begin
 	if a then if b<>c then d:=1 else c:=0
 End.
