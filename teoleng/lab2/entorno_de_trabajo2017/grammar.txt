@@ -18,11 +18,11 @@ variablesRecursion ->  identifList 'COLON' type 'SEMICOLON' variablesRecursion  
 statementSequence -> statement statementSequenceRecursivo
 statementSequenceRecursivo -> 'SEMICOLON' statement statementSequenceRecursivo | 
 
-statement 		  -> variable 'ASSIGN' expression  | 'WHILE' expression 'DO' statement | 'REPEAT' statementSequence 'UNTIL' expression | 'FOR' variableIdentif 'ASSIGN' expression toDownTo expression 'DO' statement |'BEGIN' statementSequence 'END' | 'IF' expression 'THEN' statement unElse
 
-unElse -> 'ELSE' statement | 
 
-toDownTo 		   -> 'TO' | 'DOWNTO'
+statement 				-> variable 'ASSIGN' expression | 'WHILE' expression 'DO' statement | 'REPEAT' statementSequence 'UNTIL' expression | 'FOR' variableIdentif  'ASSIGN' expression toDownTo expression 'DO' statement |'BEGIN' statementSequence 'END' |'IF' expression 'THEN' statement unelse
+toDownTo					-> 'TO' | 'DOWNTO'
+unelse 					-> 'ELSE' statement | 
 
 expression 		   -> simpleExpression | simpleExpression relationalOperator simpleExpression
 
@@ -31,7 +31,7 @@ addSub			   -> 'ADD' | 'SUB' |
 simpleExpRecursivo -> additionOperator term simpleExpRecursivo |
 
 
-term               -> factor termRecursivo | factor
+term               -> factor termRecursivo | 
 termRecursivo      -> multiplicationOperator factor termRecursivo | 
 
 factor             -> variable | 'NUMBER' | 'OPAR' expression 'CPAR' | 'NOT' factor
