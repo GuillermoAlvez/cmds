@@ -16,7 +16,7 @@ variables         -> 'VAR' identifList 'COLON' type 'SEMICOLON' variablesRecursi
 variablesRecursion ->  identifList 'COLON' type 'SEMICOLON' variablesRecursion  | 
 
 statementSequence -> statement statementSequenceRecursivo
-statementSequenceRecursivo -> 'SEMICOLON' statement statementSequenceRecursivo | 
+statementSequenceRecursivo -> statement statementSequenceRecursivo | 
 
 
 

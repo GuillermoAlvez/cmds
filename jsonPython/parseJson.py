@@ -8,7 +8,7 @@ users = {"Usuarios": [  {"nombre":"Artur","puerto":"3000"}  ,
 			{"nombre":"Facha","puerto":"3001"}  ,
 			{"nombre":"Cacho","puerto":"3002"}  ,
 			{"nombre":"Pipe","puerto":"3003"}  ,
-			#{"nombre":"Anakatana","puerto":"3004"}  ,
+			{"nombre":"Anakatana","puerto":"3004"}  ,
 			{"nombre":"Anto","puerto":"3005"}  ,
 			{"nombre":"Matiew","puerto":"3006"}  ,
 			{"nombre":"Pollo","puerto":"3007"}  ,
@@ -32,7 +32,7 @@ for i in range (0,13):
 		try:
 			req = requests.get("http://ubuntujs.labo:"+ puerto +"/api/Challenges")
 		except:
-			sys.stdout.write('.')
+			#sys.stdout.write('.')
 			#print("Connection refused by the server..")
 			#print("Let me sleep for 5 seconds")
 			#print("ZZzzzz...")
