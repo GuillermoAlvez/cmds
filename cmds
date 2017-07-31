@@ -123,3 +123,4 @@ bettercap -I wlan0 -T 192.168.1.42  --no-discovery --proxy --proxy-port 80 --pro
 
 https://www.virustotal.com/ //#information_gathering, #dominios, #domains #subdominios
 
+Netlogon Service (NP-In) // regla que bloquea psexec windows 10
