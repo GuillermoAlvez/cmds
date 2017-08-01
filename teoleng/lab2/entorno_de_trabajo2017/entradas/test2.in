@@ -1,0 +1,5 @@
+Program testShiftReduce;
+
+Begin
+	if a then if b<>c then d:=1 else c:=0
+End.

