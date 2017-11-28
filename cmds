@@ -6,6 +6,19 @@ git add .
 git commit
 git push
 
+git privado:
+git init --bare proyecto //en el server git
+
+git init
+git add .
+git commit
+git remote add origin orangeGit@192.168.1.53:proyecto
+git push
+
+
+
+
+
 VirtualBox: ns_error_failure (0x80004005), no inicia kali: deshabilitar secure boot
 
 start nginx:
@@ -112,4 +125,24 @@ git remote add origin git@bitbucket.org:<username>/hello_app.git
 bypass sanitize-html.js 1.4.2, <<script>alert(XSS2)</script>script>alert(XSS2)<<script>alert(XSS2)</script>/script> con algun enter //#nodejs libreria sanitize #minify 
 
 
+
+h3disp -m 1080p60 -d; ó ; h3disp -m 720i //manejo de display #orangepi
+
+splitear por un caracter, bash:
+IFS='.' read -ra ADDR <<< "$1"
+nombre=${ADDR[0]} 
+dmesg, lsusb, iwconfig //configuracion usb, wifi
+dmesg, lsusb, iwconfig,lsmod //configuracion usb, wifi
+
+
+
+#instalacion firmware driver tp-link tl-wn722n
+git clone https://github.com/lwfinger/rtl8188eu.git
+cd rtl8188eu
+make all
+sudo make install
+sudo reboot
+
+
+float:right; //#css #alineacion #align
 
